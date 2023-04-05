@@ -1,34 +1,59 @@
-local S = "__space-factorissimo-updated__"
+local path_prefix = "__space-factorissimo-updated-again__"
 
-function technology_prototype(name, prerequisites, effects, unit)
-	data:extend ({
-		{
-			type = "technology",
-			name = name,
-			icon = S .. "/graphics/technology/" .. name .. ".png",
-			icon_size = 128,
-			prerequisites = prerequisites,
-			effects = effects,
-			unit = unit,
-			order = "a-c"
-		}
-	})
-end
-
-function tier_1_architecture(name, prerequisites, ingredients)
-	technology_prototype(name:sub(0, #name - 1) .. "architecture-t1", prerequisites,
-		{ { type = "unlock-recipe", recipe = name } }, { count = 200, ingredients = ingredients, time = 30
-	})
-end
-
-function tier_2_architecture(name, prerequisites, ingredients)
-	technology_prototype(name:sub(0, #name - 1) .. "architecture-t2", prerequisites,
-		{ { type = "unlock-recipe", recipe = name } }, { count = 600, ingredients = ingredients, time = 45
-	})
-end
-
-function tier_3_architecture(name, prerequisites, ingredients)
-	technology_prototype(name:sub(0, #name - 1) .. "architecture-t3", prerequisites,
-		{ { type = "unlock-recipe", recipe = name } }, { count = 2000, ingredients = ingredients, time = 60
-	})
-end
+data:extend({
+	{
+		type = "technology",
+		name = "space-factory-architecture-t1",
+		icon = path_prefix .. "/graphics/technology/space-factory-architecture.png",
+		icon_size = 128,
+		prerequisites = { "factory-architecture-t3", "se-space-platform-plating", "electric-energy-distribution-2" },
+		effects = {
+			{ type = "unlock-recipe", recipe = "space-factory-1" },
+			{ type = "unlock-recipe", recipe = "space-factory-2" },
+			{ type = "unlock-recipe", recipe = "space-factory-3" }
+		},
+		unit = {
+			count = 5000,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack",   1 },
+				{ "chemical-science-pack",   1 },
+				{ "se-rocket-science-pack",  1 },
+				{ "space-science-pack",      1 },
+				{ "production-science-pack", 1 }
+			},
+			time = 60
+		},
+		order = "a-c"
+	},
+	{
+		type = "technology",
+		name = "space-gravFactory-architecture",
+		icon = path_prefix .. "/graphics/technology/space-gravFactory-architecture.png",
+		icon_size = 128,
+		prerequisites = { "factory-architecture-t3", "se-space-platform-plating", "se-deep-space-science-pack-1" },
+		effects = {
+			{ type = "unlock-recipe", recipe = "grav-factory-1" },
+			{ type = "unlock-recipe", recipe = "grav-factory-1" },
+			{ type = "unlock-recipe", recipe = "grav-factory-1" }
+		},
+		unit = {
+			count = 5000,
+			ingredients = {
+				{ "automation-science-pack",      1 },
+				{ "logistic-science-pack",        1 },
+				{ "chemical-science-pack",        1 },
+				{ "se-rocket-science-pack",       1 },
+				{ "space-science-pack",           1 },
+				{ "utility-science-pack",         1 },
+				{ "production-science-pack",      1 },
+				{ "se-astronomic-science-pack-1", 1 },
+				{ "se-energy-science-pack-1",     1 },
+				{ "se-material-science-pack-1",   1 },
+				{ "se-deep-space-science-pack-1", 1 }
+			},
+			time = 60
+		},
+		order = "a-c"
+	}
+})

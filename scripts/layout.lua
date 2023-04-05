@@ -71,9 +71,103 @@ local pattern_table = {
         }
     }
 }
+--#region I/O Connections of factory buildings
+local conn_table = {
+    ["1"] = {
+        w1 = make_connection('w1', -4.5, -2.5, -15.5, -9.5, west),
+        w2 = make_connection('w2', -4.5, -1.5, -15.5, -5.5, west),
+        w3 = make_connection('w3', -4.5, 1.5, -15.5, 5.5, west),
+        w4 = make_connection('w4', -4.5, 2.5, -15.5, 9.5, west),
+
+        e1 = make_connection('e1', 4.5, -2.5, 15.5, -9.5, east),
+        e2 = make_connection('e2', 4.5, -1.5, 15.5, -5.5, east),
+        e3 = make_connection('e3', 4.5, 1.5, 15.5, 5.5, east),
+        e4 = make_connection('e4', 4.5, 2.5, 15.5, 9.5, east),
+
+        n1 = make_connection('n1', -2.5, -4.5, -9.5, -15.5, north),
+        n2 = make_connection('n2', -1.5, -4.5, -5.5, -15.5, north),
+        n3 = make_connection('n3', 1.5, -4.5, 5.5, -15.5, north),
+        n4 = make_connection('n4', 2.5, -4.5, 9.5, -15.5, north),
+
+        s1 = make_connection('s1', -2.5, 4.5, -9.5, 15.5, south),
+        s2 = make_connection('s2', -1.5, 4.5, -5.5, 15.5, south),
+        s3 = make_connection('s3', 1.5, 4.5, 5.5, 15.5, south),
+        s4 = make_connection('s4', 2.5, 4.5, 9.5, 15.5, south)
+
+    },
+    ["2"] = {
+        w1 = make_connection('w1', -6.5, -4.5, -23.5, -18.5, west),
+        w2 = make_connection('w2', -6.5, -3.5, -23.5, -13.5, west),
+        w3 = make_connection('w3', -6.5, -2.5, -23.5, -8.5, west),
+        w4 = make_connection('w4', -6.5, 2.5, -23.5, 8.5, west),
+        w5 = make_connection('w5', -6.5, 3.5, -23.5, 13.5, west),
+        w6 = make_connection('w6', -6.5, 4.5, -23.5, 18.5, west),
+
+        e1 = make_connection('e1', 6.5, -4.5, 23.5, -18.5, east),
+        e2 = make_connection('e2', 6.5, -3.5, 23.5, -13.5, east),
+        e3 = make_connection('e3', 6.5, -2.5, 23.5, -8.5, east),
+        e4 = make_connection('e4', 6.5, 2.5, 23.5, 8.5, east),
+        e5 = make_connection('e5', 6.5, 3.5, 23.5, 13.5, east),
+        e6 = make_connection('e6', 6.5, 4.5, 23.5, 18.5, east),
+
+        n1 = make_connection('n1', -4.5, -6.5, -18.5, -23.5, north),
+        n2 = make_connection('n2', -3.5, -6.5, -13.5, -23.5, north),
+        n3 = make_connection('n3', -2.5, -6.5, -8.5, -23.5, north),
+        n4 = make_connection('n4', 2.5, -6.5, 8.5, -23.5, north),
+        n5 = make_connection('n5', 3.5, -6.5, 13.5, -23.5, north),
+        n6 = make_connection('n6', 4.5, -6.5, 18.5, -23.5, north),
+
+        s1 = make_connection('s1', -4.5, 6.5, -18.5, 23.5, south),
+        s2 = make_connection('s2', -3.5, 6.5, -13.5, 23.5, south),
+        s3 = make_connection('s3', -2.5, 6.5, -8.5, 23.5, south),
+        s4 = make_connection('s4', 2.5, 6.5, 8.5, 23.5, south),
+        s5 = make_connection('s5', 3.5, 6.5, 13.5, 23.5, south),
+        s6 = make_connection('s6', 4.5, 6.5, 18.5, 23.5, south)
+
+    },
+    ["3"] = {
+        w1 = make_connection('w1', -8.5, -5.5, -30.5, -24.5, west),
+        w2 = make_connection('w2', -8.5, -4.5, -30.5, -20.5, west),
+        w3 = make_connection('w3', -8.5, -3.5, -30.5, -9.5, west),
+        w4 = make_connection('w4', -8.5, -2.5, -30.5, -5.5, west),
+        w5 = make_connection('w5', -8.5, 2.5, -30.5, 5.5, west),
+        w6 = make_connection('w6', -8.5, 3.5, -30.5, 9.5, west),
+        w7 = make_connection('w7', -8.5, 4.5, -30.5, 20.5, west),
+        w8 = make_connection('w8', -8.5, 5.5, -30.5, 24.5, west),
+
+        e1 = make_connection('e1', 8.5, -5.5, 30.5, -24.5, east),
+        e2 = make_connection('e2', 8.5, -4.5, 30.5, -20.5, east),
+        e3 = make_connection('e3', 8.5, -3.5, 30.5, -9.5, east),
+        e4 = make_connection('e4', 8.5, -2.5, 30.5, -5.5, east),
+        e5 = make_connection('e5', 8.5, 2.5, 30.5, 5.5, east),
+        e6 = make_connection('e6', 8.5, 3.5, 30.5, 9.5, east),
+        e7 = make_connection('e7', 8.5, 4.5, 30.5, 20.5, east),
+        e8 = make_connection('e8', 8.5, 5.5, 30.5, 24.5, east),
+
+        n1 = make_connection('n1', -5.5, -8.5, -24.5, -30.5, north),
+        n2 = make_connection('n2', -4.5, -8.5, -20.5, -30.5, north),
+        n3 = make_connection('n3', -3.5, -8.5, -9.5, -30.5, north),
+        n4 = make_connection('n4', -2.5, -8.5, -5.5, -30.5, north),
+        n5 = make_connection('n5', 2.5, -8.5, 5.5, -30.5, north),
+        n6 = make_connection('n6', 3.5, -8.5, 9.5, -30.5, north),
+        n7 = make_connection('n7', 4.5, -8.5, 20.5, -30.5, north),
+        n8 = make_connection('n8', 5.5, -8.5, 24.5, -30.5, north),
+
+        s1 = make_connection('s1', -5.5, 8.5, -24.5, 30.5, south),
+        s2 = make_connection('s2', -4.5, 8.5, -20.5, 30.5, south),
+        s3 = make_connection('s3', -3.5, 8.5, -9.5, 30.5, south),
+        s4 = make_connection('s4', -2.5, 8.5, -5.5, 30.5, south),
+        s5 = make_connection('s5', 2.5, 8.5, 5.5, 30.5, south),
+        s6 = make_connection('s6', 3.5, 8.5, 9.5, 30.5, south),
+        s7 = make_connection('s7', 4.5, 8.5, 20.5, 30.5, south),
+        s8 = make_connection('s8', 5.5, 8.5, 24.5, 30.5, south)
+    }
+}
+--#endregion
 
 function make_layout(info)
-    return {
+    -- create base layout usable for every space factory
+    local layout = {
         name = info.name,
         tier = info.tier,
         inside_size = info.inside_size,
@@ -94,12 +188,23 @@ function make_layout(info)
                 x1 = -6, x2 = 6, y1 = -4, y2 = 4, tile = info.pattern, pattern = pattern_table[info.partType][info.tier]
             }
         },
+        connections = conn_table[info.tier],
         connection_tile = info.floor,
-        connections = info.connections,
         overlays = info.overlays
     }
+
+    -- add surface override so that space buildings can be used in the space factories
+    local factory_type,_ = info.name:match("(.+)-(.+)-(.+)")
+    if factory_type == "space" then
+        layout.surface_override = "Space Factory Floor"
+    elseif factory_type == "grav" then
+        layout.surface_override = "Grav Factory Floor"
+    end
+
+    return layout
 end
 
+--#region SPACE FACTORIES
 function tier_1_layout(name)
     local info = {}
     info.name = name
@@ -136,28 +241,6 @@ function tier_1_layout(name)
         {
             x1 = -2, x2 = 2, y1 = 15, y2 = 18, tile = info.entrance
         },
-    }
-    info.connections = {
-        w1 = make_connection('w1', -4.5, -2.5, -15.5, -9.5, west),
-        w2 = make_connection('w2', -4.5, -1.5, -15.5, -5.5, west),
-        w3 = make_connection('w3', -4.5, 1.5, -15.5, 5.5, west),
-        w4 = make_connection('w4', -4.5, 2.5, -15.5, 9.5, west),
-
-        e1 = make_connection('e1', 4.5, -2.5, 15.5, -9.5, east),
-        e2 = make_connection('e2', 4.5, -1.5, 15.5, -5.5, east),
-        e3 = make_connection('e3', 4.5, 1.5, 15.5, 5.5, east),
-        e4 = make_connection('e4', 4.5, 2.5, 15.5, 9.5, east),
-
-        n1 = make_connection('n1', -2.5, -4.5, -9.5, -15.5, north),
-        n2 = make_connection('n2', -1.5, -4.5, -5.5, -15.5, north),
-        n3 = make_connection('n3', 1.5, -4.5, 5.5, -15.5, north),
-        n4 = make_connection('n4', 2.5, -4.5, 9.5, -15.5, north),
-
-        s1 = make_connection('s1', -2.5, 4.5, -9.5, 15.5, south),
-        s2 = make_connection('s2', -1.5, 4.5, -5.5, 15.5, south),
-        s3 = make_connection('s3', 1.5, 4.5, 5.5, 15.5, south),
-        s4 = make_connection('s4', 2.5, 4.5, 9.5, 15.5, south)
-
     }
     info.overlays = {
         outside_x = 0,
@@ -207,35 +290,6 @@ function tier_2_layout(name)
             x1 = -2, x2 = 2, y1 = 23, y2 = 26, tile = info.entrance
         },
     }
-    info.connections = {
-        w1 = make_connection('w1', -6.5, -4.5, -23.5, -18.5, west),
-        w2 = make_connection('w2', -6.5, -3.5, -23.5, -13.5, west),
-        w3 = make_connection('w3', -6.5, -2.5, -23.5, -8.5, west),
-        w4 = make_connection('w4', -6.5, 2.5, -23.5, 8.5, west),
-        w5 = make_connection('w5', -6.5, 3.5, -23.5, 13.5, west),
-        w6 = make_connection('w6', -6.5, 4.5, -23.5, 18.5, west),
-
-        e1 = make_connection('e1', 6.5, -4.5, 23.5, -18.5, east),
-        e2 = make_connection('e2', 6.5, -3.5, 23.5, -13.5, east),
-        e3 = make_connection('e3', 6.5, -2.5, 23.5, -8.5, east),
-        e4 = make_connection('e4', 6.5, 2.5, 23.5, 8.5, east),
-        e5 = make_connection('e5', 6.5, 3.5, 23.5, 13.5, east),
-        e6 = make_connection('e6', 6.5, 4.5, 23.5, 18.5, east),
-
-        n1 = make_connection('n1', -4.5, -6.5, -18.5, -23.5, north),
-        n2 = make_connection('n2', -3.5, -6.5, -13.5, -23.5, north),
-        n3 = make_connection('n3', -2.5, -6.5, -8.5, -23.5, north),
-        n4 = make_connection('n4', 2.5, -6.5, 8.5, -23.5, north),
-        n5 = make_connection('n5', 3.5, -6.5, 13.5, -23.5, north),
-        n6 = make_connection('n6', 4.5, -6.5, 18.5, -23.5, north),
-
-        s1 = make_connection('s1', -4.5, 6.5, -18.5, 23.5, south),
-        s2 = make_connection('s2', -3.5, 6.5, -13.5, 23.5, south),
-        s3 = make_connection('s3', -2.5, 6.5, -8.5, 23.5, south),
-        s4 = make_connection('s4', 2.5, 6.5, 8.5, 23.5, south),
-        s5 = make_connection('s5', 3.5, 6.5, 13.5, 23.5, south),
-        s6 = make_connection('s6', 4.5, 6.5, 18.5, 23.5, south)
-    }
     info.overlays = {
         outside_x = 0,
         outside_y = -1,
@@ -283,43 +337,6 @@ function tier_3_layout(name)
             x1 = -2, x2 = 2, y1 = 30, y2 = 33, tile = info.entrance
         },
     }
-    info.connections = {
-        w1 = make_connection('w1', -8.5, -5.5, -30.5, -24.5, west),
-        w2 = make_connection('w2', -8.5, -4.5, -30.5, -20.5, west),
-        w3 = make_connection('w3', -8.5, -3.5, -30.5, -9.5, west),
-        w4 = make_connection('w4', -8.5, -2.5, -30.5, -5.5, west),
-        w5 = make_connection('w5', -8.5, 2.5, -30.5, 5.5, west),
-        w6 = make_connection('w6', -8.5, 3.5, -30.5, 9.5, west),
-        w7 = make_connection('w7', -8.5, 4.5, -30.5, 20.5, west),
-        w8 = make_connection('w8', -8.5, 5.5, -30.5, 24.5, west),
-
-        e1 = make_connection('e1', 8.5, -5.5, 30.5, -24.5, east),
-        e2 = make_connection('e2', 8.5, -4.5, 30.5, -20.5, east),
-        e3 = make_connection('e3', 8.5, -3.5, 30.5, -9.5, east),
-        e4 = make_connection('e4', 8.5, -2.5, 30.5, -5.5, east),
-        e5 = make_connection('e5', 8.5, 2.5, 30.5, 5.5, east),
-        e6 = make_connection('e6', 8.5, 3.5, 30.5, 9.5, east),
-        e7 = make_connection('e7', 8.5, 4.5, 30.5, 20.5, east),
-        e8 = make_connection('e8', 8.5, 5.5, 30.5, 24.5, east),
-
-        n1 = make_connection('n1', -5.5, -8.5, -24.5, -30.5, north),
-        n2 = make_connection('n2', -4.5, -8.5, -20.5, -30.5, north),
-        n3 = make_connection('n3', -3.5, -8.5, -9.5, -30.5, north),
-        n4 = make_connection('n4', -2.5, -8.5, -5.5, -30.5, north),
-        n5 = make_connection('n5', 2.5, -8.5, 5.5, -30.5, north),
-        n6 = make_connection('n6', 3.5, -8.5, 9.5, -30.5, north),
-        n7 = make_connection('n7', 4.5, -8.5, 20.5, -30.5, north),
-        n8 = make_connection('n8', 5.5, -8.5, 24.5, -30.5, north),
-
-        s1 = make_connection('s1', -5.5, 8.5, -24.5, 30.5, south),
-        s2 = make_connection('s2', -4.5, 8.5, -20.5, 30.5, south),
-        s3 = make_connection('s3', -3.5, 8.5, -9.5, 30.5, south),
-        s4 = make_connection('s4', -2.5, 8.5, -5.5, 30.5, south),
-        s5 = make_connection('s5', 2.5, 8.5, 5.5, 30.5, south),
-        s6 = make_connection('s6', 3.5, 8.5, 9.5, 30.5, south),
-        s7 = make_connection('s7', 4.5, 8.5, 20.5, 30.5, south),
-        s8 = make_connection('s8', 5.5, 8.5, 24.5, 30.5, south)
-    }
     info.overlays = {
         outside_x = 0,
         outside_y = -1,
@@ -330,3 +347,4 @@ function tier_3_layout(name)
     }
     return make_layout(info)
 end
+--#endregion
