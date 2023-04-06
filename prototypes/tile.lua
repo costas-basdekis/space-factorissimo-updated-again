@@ -1,7 +1,6 @@
 require("scripts.utility")
 
-local F = '__factorissimo-2-notnotmelon__'
-local S = "__space-factorissimo-updated__"
+local factorissimo_path = '__factorissimo-2-notnotmelon__'
 
 alien_biomes_priority_tiles = alien_biomes_priority_tiles or {}
 
@@ -20,11 +19,11 @@ function make_tile(tinfo)
 			layer = tinfo.layer or 50,
 			variants = {
 				main = tinfo.pictures,
-				inner_corner = { picture = F .. "/graphics/nothing.png", count = 0 },
-				outer_corner = { picture = F .. "/graphics/nothing.png", count = 0 },
-				side = { picture = F .. "/graphics/nothing.png", count = 0 },
-				u_transition = { picture = F .. "/graphics/nothing.png", count = 0 },
-				o_transition = { picture = F .. "/graphics/nothing.png", count = 0 },
+				inner_corner = { picture = factorissimo_path .. "/graphics/nothing.png", count = 0 },
+				outer_corner = { picture = factorissimo_path .. "/graphics/nothing.png", count = 0 },
+				side = { picture = factorissimo_path .. "/graphics/nothing.png", count = 0 },
+				u_transition = { picture = factorissimo_path .. "/graphics/nothing.png", count = 0 },
+				o_transition = { picture = factorissimo_path .. "/graphics/nothing.png", count = 0 },
 			},
 			walking_speed_modifier = 1.3,
 			walking_sound = {
@@ -91,7 +90,7 @@ end
 
 local function sf3fc() return { r = 100, g = 120, b = 120 } end
 
-local function pictures_out()
+local function pictures_outside()
 	return {
 		{
 			picture = "__base__/graphics/terrain/out-of-map.png",
@@ -101,21 +100,21 @@ local function pictures_out()
 	}
 end
 
-local function pictures_sff()
+local function pictures_floor()
 	return {
 		{
-			picture = S .. "/graphics/tile/sff_1.png",
+			picture = factorissimo_path .. "/graphics/tile/ff_1.png",
 			count = 16,
 			size = 1
 		},
 		{
-			picture = S .. "/graphics/tile/sff_2.png",
+			picture = factorissimo_path .. "/graphics/tile/ff_2.png",
 			count = 4,
 			size = 2,
 			probability = 0.39,
 		},
 		{
-			picture = S .. "/graphics/tile/sff_4.png",
+			picture = factorissimo_path .. "/graphics/tile/ff_4.png",
 			count = 4,
 			size = 4,
 			probability = 1,
@@ -123,63 +122,75 @@ local function pictures_sff()
 	}
 end
 
-local function pictures_fp(i)
+local function pictures_pattern(i)
 	return {
 		{
-			picture = S .. '/graphics/tile/sft_' .. i .. '.png',
+			picture = factorissimo_path .. '/graphics/tile/ff' .. i .. '_1.png',
+			count = 16,
+			size = 1
+		},
+		{
+			picture = factorissimo_path .. '/graphics/tile/ff' .. i .. '_2.png',
+			count = 4,
+			size = 2,
+			probability = 0.39,
+		},
+		{
+			picture = factorissimo_path .. '/graphics/tile/ff' .. i .. '_4.png',
+			count = 4,
+			size = 4,
+			probability = 1,
+		},
+	}
+end
+
+local function pictures_walls(i)
+	return {
+		{
+			picture = factorissimo_path .. '/graphics/tile/fw' .. i .. '_1.png',
 			count = 16,
 			size = 1
 		},
 	}
 end
 
-local function pictures_fw(i)
-	return {
-		{
-			picture = S .. '/graphics/tile/sft_' .. i .. '.png',
-			count = 16,
-			size = 1
-		},
-	}
-end
-
-make_tile {
+make_tile({
 	name = "out-of-space-factory",
 	collision_mask = wall_mask(),
 	layer = 70,
-	pictures = pictures_out(),
+	pictures = pictures_outside(),
 	map_color = { r = 0, g = 0, b = 0 },
-}
+})
 
-make_tile {
+make_tile({
 	name = "space-factory-floor",
 	collision_mask = space_floor_mask(),
 	layer = 30,
-	pictures = pictures_sff(),
+	pictures = pictures_floor(),
 	map_color = sf3fc(),
-}
+})
 
-make_tile {
+make_tile({
 	name = "space-factory-entrance",
 	collision_mask = edge_mask(),
 	layer = 30,
-	pictures = pictures_sff(),
+	pictures = pictures_floor(),
 	map_color = sf3fc(),
-}
+})
 
 function tile_prototype(name, map_color, mask)
 	make_tile({
 		name = name:sub(0, #name - 1) .. "pattern" .. name:sub(#name - 1, #name),
 		collision_mask = mask,
 		layer = 30,
-		pictures = pictures_fp(name:sub(#name, #name + 1)),
+		pictures = pictures_pattern(name:sub(#name, #name + 1)),
 		map_color = map_color,
 	})
 	make_tile({
 		name = name:sub(0, #name - 1) .. "wall" .. name:sub(#name - 1, #name),
 		collision_mask = edge_mask(),
 		layer = 30,
-		pictures = pictures_fw(name:sub(#name, #name + 1)),
+		pictures = pictures_walls(name:sub(#name, #name + 1)),
 		map_color = map_color,
 	})
 end

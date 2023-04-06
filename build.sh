@@ -33,8 +33,6 @@ with zipfile.ZipFile('$ZIP_NAME', 'w', zipfile.ZIP_DEFLATED) as ziph:
 HEREDOC
 `
 
-python3 -c "$python"
-
 if [ -f $FACTIORIO_PATH$ZIP_NAME ]; then
     rm $FACTIORIO_PATH$ZIP_NAME
 fi

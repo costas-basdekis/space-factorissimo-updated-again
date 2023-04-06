@@ -1,68 +1,51 @@
-require("prototypes.factory")
+require("prototypes.entity")
 require("prototypes.recipe")
 require("prototypes.technology")
 require("prototypes.tile")
 require("prototypes.input")
 
--- Custom Inputs
-input_prototype("factory-rotate", "R")
-input_prototype("factory-increase", "SHIFT + R")
-input_prototype("factory-decrease", "CONTROL + R")
-
 -- Space Factory 1
 local spaceFactory1 = "space-factory-1"
-local spaceFactory1_map_color = --[[ Maroon #800000 ]] { 0.5019607843137255, 0.0, 0.0 }
+local spaceFactory1_map_color = --[[ Maroon #800000 ]] { 0.5, 0.0, 0.0 }
 tier_1_factory(spaceFactory1, spaceFactory1_map_color)
-tier_1_architecture(spaceFactory1,
-    { "se-space-platform-scaffold", "electric-energy-distribution-2", "factory-architecture-t2" },
-    {
-        { "automation-science-pack", 1 },
-        { "logistic-science-pack", 1 },
-        { "chemical-science-pack", 1 },
-        { "se-rocket-science-pack", 1 },
-        { "space-science-pack", 1 }
-    })
+
 tile_prototype(spaceFactory1, spaceFactory1_map_color)
-recipe_prototype(spaceFactory1, "space-crafting",
-    { { "se-space-platform-scaffold", 500 }, { "se-heat-shielding", 500 }, { "substation", 10 } })
 
 -- Space Factory 2
 local spaceFactory2 = "space-factory-2"
-local spaceFactory2_map_color = --[[ Dark Cyan #008B8B ]] { 0.0, 0.5450980392156862, 0.5450980392156862 }
+local spaceFactory2_map_color = --[[ Dark Cyan #008B8B ]] { 0.0, 0.545, 0.545 }
 tier_2_factory(spaceFactory2, spaceFactory2_map_color)
-tier_2_architecture(spaceFactory2,
-    { "space-factory-architecture-t1", "factory-architecture-t3" },
-    {
-        { "automation-science-pack", 1 },
-        { "logistic-science-pack", 1 },
-        { "chemical-science-pack", 1 },
-        { "se-rocket-science-pack", 1 },
-        { "space-science-pack", 1 },
-        { "production-science-pack", 1 }
-    })
-space_tiles(spaceFactory2, spaceFactory2_map_color)
-recipe_prototype(spaceFactory2, "space-manufacturing",
-    { { "se-space-platform-scaffold", 1000 }, { "se-heat-shielding", 1000 }, { "substation", 50 } })
+
+tile_prototype(spaceFactory2, spaceFactory2_map_color)
 
 -- Space Factory 3
 local spaceFactory3 = "space-factory-3"
-local spaceFactory3_map_color = --[[ Dark Khaki #BDB76B ]] { 0.7411764705882353, 0.7176470588235294, 0.4196078431372549 }
+local spaceFactory3_map_color = --[[ Dark Khaki #BDB76B ]] { 0.741, 0.718, 0.42 }
 tier_3_factory(spaceFactory3, spaceFactory3_map_color)
-tier_3_architecture(spaceFactory3,
-    { "space-factory-architecture-t2", "se-space-platform-plating" },
-    {
-        { "automation-science-pack", 1 },
-        { "logistic-science-pack", 1 },
-        { "chemical-science-pack", 1 },
-        { "se-rocket-science-pack", 1 },
-        { "space-science-pack", 1 },
-        { "production-science-pack", 1 },
-        { "se-material-science-pack-1", 1 }
-    })
-space_tiles(spaceFactory3, spaceFactory3_map_color)
-recipe_prototype(spaceFactory3, "space-manufacturing",
-    { { "se-space-platform-plating", 5000 }, { "se-heat-shielding", 2000 }, { "substation", 100 } })
 
+tile_prototype(spaceFactory3, spaceFactory3_map_color)
+
+
+-- Grav Factory 1
+local gravFactory1 = "grav-factory-1"
+local gravFactory1_map_color = --[[ IDFK ]] { 0.55, 0.7, 0.8 }
+tier_3_factory(gravFactory1, gravFactory1_map_color)
+
+tile_prototype(gravFactory1, gravFactory1_map_color)
+
+-- Grav Factory 2
+local gravFactory2 = "grav-factory-2"
+local gravFactory2_map_color = --[[ IDFK ]] { 0.55, 0.7, 0.8 }
+tier_3_factory(gravFactory2, gravFactory2_map_color)
+
+tile_prototype(gravFactory2, gravFactory2_map_color)
+
+-- Grav Factory 3
+local gravFactory3 = "grav-factory-3"
+local gravFactory3_map_color = --[[ IDFK ]] { 0.55, 0.7, 0.8 }
+tier_3_factory(gravFactory3, gravFactory3_map_color)
+
+tile_prototype(gravFactory3, gravFactory3_map_color)
 -- Space GravFactory 1
 --[[
 local gravFactory1 = "gravity-factory-1"

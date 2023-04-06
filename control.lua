@@ -26,6 +26,8 @@ local function add_layouts()
 	end
 end
 
+-- Create surfaces to be used by the factories
+-- for simplicity we only use a single layout per factory type
 local function create_surface(surface_name)
 	local surface = game.surfaces[surface_name]
 	
