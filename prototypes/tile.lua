@@ -52,14 +52,14 @@ end
 
 function space_floor_mask()
 	return {
-		--interior_tile,
+		interior_tile,
 		space_tile
 	}
 end
 
 function gravity_floor_mask()
 	return {
-		--interior_tile,
+		interior_tile,
 		ground_tile
 	}
 end
