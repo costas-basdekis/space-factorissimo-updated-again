@@ -213,9 +213,9 @@ function make_layout(info)
     -- add surface override so that space buildings can be used in the space factories
     local factory_type,_ = info.name:match("(.+)-(.+)-(.+)")
     if factory_type == "space" then
-        layout.surface_override = "space-factory-floor"
+        layout.surface_override = "Space Factory"
     elseif factory_type == "grav" then
-        layout.surface_override = "grav-factory-floor"
+        layout.surface_override = "Gravity Factory"
     end
 
     return layout
@@ -232,7 +232,7 @@ function tier_1_layout(name)
     info.overlay_name = name .. "-overlay"
     info.wall = info.fullType .. "-wall-" .. info.tier
     info.floor = info.fullType .. "-floor"
-    info.floor = "space-factory-floor"
+    --info.floor = "space-factory-floor"
     info.entrance = "space-factory-entrance"
     info.pattern = info.fullType .. "-pattern-" .. info.tier
     info.inside_size = 30
@@ -280,7 +280,8 @@ function tier_2_layout(name)
     info.tier = name:sub(#name, #name + 1)
     info.overlay_name = name .. "-overlay"
     info.wall = info.fullType .. "-wall-" .. info.tier
-    info.floor = "space-factory-floor"
+    info.floor = info.fullType .. "-floor"
+    --info.floor = "space-factory-floor"
     info.entrance = "space-factory-entrance"
     info.pattern = info.fullType .. "-pattern-" .. info.tier
     info.inside_size = 46
@@ -328,7 +329,8 @@ function tier_3_layout(name)
     info.tier = name:sub(#name, #name + 1)
     info.overlay_name = name .. "-overlay"
     info.wall = info.fullType .. "-wall-" .. info.tier
-    info.floor = "space-factory-floor"
+    --info.floor = "space-factory-floor"
+    info.floor = info.fullType .. "-floor"
     info.entrance = "space-factory-entrance"
     info.pattern = info.fullType .. "-pattern-" .. info.tier
     info.inside_size = 60

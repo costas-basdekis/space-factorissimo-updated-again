@@ -37,8 +37,8 @@ end
 script.on_init(
 	function()
 		init_globals()
-		create_surface("space-factory-floor")
-		create_surface("grav-factory-floor")
+		create_surface("Space Factory")
+		create_surface("Gravity Factory")
 		add_layout()
 	end)
 script.on_configuration_changed(add_layouts)

@@ -7,6 +7,8 @@ alien_biomes_priority_tiles = alien_biomes_priority_tiles or {}
 local interior_tile = collision_mask_util_extended.get_make_named_collision_mask("interior-tile")
 local space_tile = collision_mask_util_extended.get_make_named_collision_mask("space-tile")
 local ground_tile = collision_mask_util_extended.get_make_named_collision_mask("ground-tile")
+local planet_tile = collision_mask_util_extended.get_named_collision_mask("planet-tile")
+
 
 function make_tile(tinfo)
 	table.insert(alien_biomes_priority_tiles, tinfo.name)
@@ -60,7 +62,8 @@ end
 function gravity_floor_mask()
 	return {
 		interior_tile,
-		ground_tile
+		ground_tile,
+		planet_tile
 	}
 end
 
@@ -198,7 +201,7 @@ make_tile({
 function tile_prototype(name, map_color, mask)
 	make_tile({
 		name = name:sub(0, #name - 1) .. "pattern" .. name:sub(#name - 1, #name),
-		collision_mask = space_floor_mask(),
+		collision_mask = mask,
 		layer = 30,
 		pictures = pictures_pattern(name:sub(#name, #name + 1)),
 		map_color = map_color,
