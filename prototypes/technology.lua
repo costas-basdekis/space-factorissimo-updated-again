@@ -35,8 +35,8 @@ data:extend({
 		prerequisites = { "factory-architecture-t3", "se-space-platform-plating", "se-deep-space-science-pack-1" },
 		effects = {
 			{ type = "unlock-recipe", recipe = "grav-factory-1" },
-			{ type = "unlock-recipe", recipe = "grav-factory-1" },
-			{ type = "unlock-recipe", recipe = "grav-factory-1" }
+			{ type = "unlock-recipe", recipe = "grav-factory-2" },
+			{ type = "unlock-recipe", recipe = "grav-factory-3" }
 		},
 		unit = {
 			count = 5000,
