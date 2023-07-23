@@ -50,15 +50,16 @@ function make_tile(tinfo)
 	}
 end
 
-local function space_floor_mask()
+function space_floor_mask()
 	return {
-		interior_tile,
+		--interior_tile,
 		space_tile
 	}
 end
 
-local function gravity_floor_mask()
+function gravity_floor_mask()
 	return {
+		--interior_tile,
 		ground_tile
 	}
 end
@@ -178,10 +179,26 @@ make_tile({
 	map_color = sf3fc(),
 })
 
+make_tile({
+	name = "grav-factory-floor",
+	collision_mask = gravity_floor_mask(),
+	layer = 30,
+	pictures = pictures_floor(),
+	map_color = sf3fc(),
+})
+
+make_tile({
+	name = "grav-factory-entrance",
+	collision_mask = edge_mask(),
+	layer = 30,
+	pictures = pictures_floor(),
+	map_color = sf3fc(),
+})
+
 function tile_prototype(name, map_color, mask)
 	make_tile({
 		name = name:sub(0, #name - 1) .. "pattern" .. name:sub(#name - 1, #name),
-		collision_mask = mask,
+		collision_mask = space_floor_mask(),
 		layer = 30,
 		pictures = pictures_pattern(name:sub(#name, #name + 1)),
 		map_color = map_color,

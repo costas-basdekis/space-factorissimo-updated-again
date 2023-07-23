@@ -1,3 +1,4 @@
+require 'util'
 require("scripts.layout")
 
 local factory_layouts = {}
@@ -41,13 +42,12 @@ local function create_surface(surface_name)
 	end
 end
 
-local function init()
-	create_surface("Space Factory Floor")
-	create_surface("Grav Factory Floor")
-	add_layouts()
-end
+--script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_entity, defines.events.script_raised_built, defines.events.script_raised_revive}
 
-
-
-script.on_init(init)
+script.on_init(
+	function()
+		create_surface("space-factory-floor")
+		create_surface("grav-factory-floor")
+		add_layouts()
+	end)
 script.on_configuration_changed(add_layouts)

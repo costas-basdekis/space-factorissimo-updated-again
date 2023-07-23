@@ -1,4 +1,4 @@
-local local_prefix = "__space-factorissimo-updated__"
+local local_prefix = "__space-factorissimo-updated-again__"
 local factorissimo_prefix = '__factorissimo-2-notnotmelon__';
 
 require("circuit-connector-sprites")
@@ -32,7 +32,8 @@ local function spacefactory_collision_mask()
     }
 end
 
-local function factory_prototype(name, map_color, factory_default)
+local function factory_prototype(name,tier, map_color, factory_default)
+
     data:extend({
         {
             type = "storage-tank",
@@ -52,7 +53,7 @@ local function factory_prototype(name, map_color, factory_default)
                 picture = {
                     layers = {
                         {
-                            filename = local_prefix .. "/graphics/factory/" .. name .. "-shadow.png",
+                            filename = factorissimo_prefix .. "/graphics/factory/factory-" .. tier .. "-shadow.png",
                             width = factory_default.width,
                             height = factory_default.height,
                             shift = factory_default.shift,
@@ -84,7 +85,7 @@ local function factory_prototype(name, map_color, factory_default)
             map_color = map_color,
             is_military_target = true
         },
-        {
+--[[        {
             type = "item-with-tags",
             name = name,
             --localised_name = { "entity-name." .. name },
@@ -94,7 +95,7 @@ local function factory_prototype(name, map_color, factory_default)
             order = "a-c",
             place_result = name,
             stack_size = 1
-        },
+        }, ]]
         {
             type = "item",
             name = name,
@@ -118,7 +119,7 @@ function tier_1_factory(name)
         height = 320,
         shift = { 1.5, 0 }
     }
-    factory_prototype(name, map_color, defaults)
+    factory_prototype(name,1, map_color, defaults)
 end
 
 function tier_2_factory(name)
@@ -130,7 +131,7 @@ function tier_2_factory(name)
         shift = { 1.5, 0 }
     }
 
-    factory_prototype(name, map_color, defaults)
+    factory_prototype(name,2, map_color, defaults)
 end
 
 function tier_3_factory(name)
@@ -141,5 +142,5 @@ function tier_3_factory(name)
         height = 608,
         shift = { 2, -0.09375 }
     }
-    factory_prototype(name, map_color, defaults)
+    factory_prototype(name,3, map_color, defaults)
 end

@@ -3,7 +3,24 @@ local east = defines.direction.east
 local south = defines.direction.south
 local west = defines.direction.west
 
-local make_connection = function(...) return remote.call('factorissimo', 'make_connection', ...) end
+--local make_connection = function(...) return remote.call('factorissimo', 'make_connection', ...) end
+
+local opposite = {[north] = south, [east] = west, [south] = north, [west] = east}
+local DX = {[north] = 0, [east] = 1, [south] = 0, [west] = -1}
+local DY = {[north] = -1, [east] = 0, [south] = 1, [west] = 0}
+local make_connection = function(id, outside_x, outside_y, inside_x, inside_y, direction_out)
+	return {
+		id = id,
+		outside_x = outside_x,
+		outside_y = outside_y,
+		inside_x = inside_x,
+		inside_y = inside_y,
+		indicator_dx = DX[direction_out],
+		indicator_dy = DY[direction_out],
+		direction_in = opposite[direction_out],
+		direction_out = direction_out,
+	}
+end
 
 local pattern_table = {
     ["factory"] = {
@@ -196,9 +213,9 @@ function make_layout(info)
     -- add surface override so that space buildings can be used in the space factories
     local factory_type,_ = info.name:match("(.+)-(.+)-(.+)")
     if factory_type == "space" then
-        layout.surface_override = "Space Factory Floor"
+        layout.surface_override = "space-factory-floor"
     elseif factory_type == "grav" then
-        layout.surface_override = "Grav Factory Floor"
+        layout.surface_override = "grav-factory-floor"
     end
 
     return layout
@@ -215,7 +232,8 @@ function tier_1_layout(name)
     info.overlay_name = name .. "-overlay"
     info.wall = info.fullType .. "-wall-" .. info.tier
     info.floor = info.fullType .. "-floor"
-    info.entrance = info.fullType .. "-entrance"
+    info.floor = "space-factory-floor"
+    info.entrance = "space-factory-entrance"
     info.pattern = info.fullType .. "-pattern-" .. info.tier
     info.inside_size = 30
     info.outside_size = 8
@@ -262,8 +280,8 @@ function tier_2_layout(name)
     info.tier = name:sub(#name, #name + 1)
     info.overlay_name = name .. "-overlay"
     info.wall = info.fullType .. "-wall-" .. info.tier
-    info.floor = info.fullType .. "-floor"
-    info.entrance = info.fullType .. "-entrance"
+    info.floor = "space-factory-floor"
+    info.entrance = "space-factory-entrance"
     info.pattern = info.fullType .. "-pattern-" .. info.tier
     info.inside_size = 46
     info.outside_size = 12
@@ -304,13 +322,14 @@ end
 function tier_3_layout(name)
     local info = {}
     info.name = name
+    info.fullType = name:sub(0, #name - 2)
     local _, partType = name:match("(.+)-(.+)-(.+)")
     info.partType = partType
     info.tier = name:sub(#name, #name + 1)
     info.overlay_name = name .. "-overlay"
     info.wall = info.fullType .. "-wall-" .. info.tier
-    info.floor = info.fullType .. "-floor"
-    info.entrance = info.fullType .. "-entrance"
+    info.floor = "space-factory-floor"
+    info.entrance = "space-factory-entrance"
     info.pattern = info.fullType .. "-pattern-" .. info.tier
     info.inside_size = 60
     info.outside_size = 16
