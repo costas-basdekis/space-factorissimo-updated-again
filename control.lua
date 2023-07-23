@@ -1,40 +1,16 @@
 require 'util'
 require("scripts.layout")
 
-local factory_layouts = {}
-
--- Space Factory 1
-table.insert(factory_layouts, function(...) remote.call("factorissimo", "add_layout", tier_1_layout("space-factory-1")) end)
-
--- Space Factory 2
-table.insert(factory_layouts, function(...) remote.call("factorissimo", "add_layout", tier_2_layout("space-factory-2")) end)
-
--- Space Factory 3
-table.insert(factory_layouts, function(...) remote.call("factorissimo", "add_layout", tier_3_layout("space-factory-3")) end)
-
---Grav Factory 1
-table.insert(factory_layouts, function(...) remote.call("factorissimo", "add_layout", tier_1_layout("grav-factory-1")) end)
-
--- Grav Factory 2
-table.insert(factory_layouts, function(...) remote.call("factorissimo", "add_layout", tier_2_layout("grav-factory-2")) end)
-
--- Grav Factory 3
-table.insert(factory_layouts, function(...) remote.call("factorissimo", "add_layout", tier_3_layout("grav-factory-3")) end)
-
-local function add_layouts()
-	for _, v in pairs(factory_layouts) do
-		v()
-	end
+local function init_globals()
+	-- Map: Surface name -> number of used factory spots on it
+	global.surface_factory_counters = global.surface_factory_counters or {}
+	-- Scalar
+	global.next_factory_space_surface = global.next_factory_space_surface or 0
 end
 
 -- Create surfaces to be used by the factories
 -- for simplicity we only use a single layout per factory type
 local function create_surface(surface_name)
-	global.next_factory_space_surface = global.next_factory_space_surface + 1
-	if (settings.global['Factorissimo2-same-surface'].value) then
-		global.next_factory_space_surface = 1
-	end
-	local surface_name = surface_name .. global.next_factory_space_surface
 	local surface = game.surfaces[surface_name]
 	
 	if surface == nil then
@@ -45,16 +21,24 @@ local function create_surface(surface_name)
             		pcall(remote.call, "RSO", "ignoreSurface", surface_name)
         	end
 	end
-	local n = global.surface_factory_counters[surface_name] or 0
-	global.surface_factory_counters[surface_name] = n+1
 end
 
---script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_entity, defines.events.script_raised_built, defines.events.script_raised_revive}
+function add_layout()
+	if remote.interfaces["factorissimo"] then
+        remote.call("factorissimo", "add_layout", tier_1_layout("space-factory-1"))
+		remote.call("factorissimo", "add_layout", tier_1_layout("space-factory-2"))
+		remote.call("factorissimo", "add_layout", tier_1_layout("space-factory-3"))
+        remote.call("factorissimo", "add_layout", tier_1_layout("grav-factory-1"))
+		remote.call("factorissimo", "add_layout", tier_1_layout("grav-factory-2"))
+		remote.call("factorissimo", "add_layout", tier_1_layout("grav-factory-3"))
+    end
+end
 
 script.on_init(
 	function()
+		init_globals()
 		create_surface("space-factory-floor")
 		create_surface("grav-factory-floor")
-		add_layouts()
+		add_layout()
 	end)
 script.on_configuration_changed(add_layouts)

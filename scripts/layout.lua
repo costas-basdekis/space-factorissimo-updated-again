@@ -23,7 +23,7 @@ local make_connection = function(id, outside_x, outside_y, inside_x, inside_y, d
 end
 
 local pattern_table = {
-    ["factory"] = {
+    ["space-factory"] = {
         ["1"] = {
             ' +++++   ++ ',
             '++++++  +++ ',
@@ -55,7 +55,7 @@ local pattern_table = {
             '+++++   +++ ',
         }
     },
-    ["gravfactory"] = {
+    ["grav-factory"] = {
         ["1"] = {
             '  ++++   ++ ',
             '++++++  +++ ',
@@ -202,7 +202,7 @@ function make_layout(info)
         rectangles = info.rectangles,
         mosaics = {
             {
-                x1 = -6, x2 = 6, y1 = -4, y2 = 4, tile = info.pattern, pattern = pattern_table[info.partType][info.tier]
+                x1 = -6, x2 = 6, y1 = -4, y2 = 4, tile = info.pattern, pattern = pattern_table[info.fullType][info.tier]
             }
         },
         connections = conn_table[info.tier],
