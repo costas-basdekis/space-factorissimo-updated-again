@@ -26,11 +26,11 @@ end
 function add_layout()
 	if remote.interfaces["factorissimo"] then
         remote.call("factorissimo", "add_layout", tier_1_layout("space-factory-1"))
-		remote.call("factorissimo", "add_layout", tier_1_layout("space-factory-2"))
-		remote.call("factorissimo", "add_layout", tier_1_layout("space-factory-3"))
+		remote.call("factorissimo", "add_layout", tier_2_layout("space-factory-2"))
+		remote.call("factorissimo", "add_layout", tier_3_layout("space-factory-3"))
         remote.call("factorissimo", "add_layout", tier_1_layout("grav-factory-1"))
-		remote.call("factorissimo", "add_layout", tier_1_layout("grav-factory-2"))
-		remote.call("factorissimo", "add_layout", tier_1_layout("grav-factory-3"))
+		remote.call("factorissimo", "add_layout", tier_2_layout("grav-factory-2"))
+		remote.call("factorissimo", "add_layout", tier_3_layout("grav-factory-3"))
     end
 end
 
