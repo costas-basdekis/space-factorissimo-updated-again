@@ -1,13 +1,6 @@
 require 'util'
 require("scripts.layout")
 
-local function init_globals()
-	-- Map: Surface name -> number of used factory spots on it
-	global.surface_factory_counters = global.surface_factory_counters or {}
-	-- Scalar
-	global.next_factory_space_surface = global.next_factory_space_surface or 0
-end
-
 -- Create surfaces to be used by the factories
 -- for simplicity we only use a single layout per factory type
 local function create_surface(surface_name)
