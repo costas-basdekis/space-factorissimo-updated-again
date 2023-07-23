@@ -30,16 +30,23 @@ end
 -- Create surfaces to be used by the factories
 -- for simplicity we only use a single layout per factory type
 local function create_surface(surface_name)
+	global.next_factory_space_surface = global.next_factory_space_surface + 1
+	if (settings.global['Factorissimo2-same-surface'].value) then
+		global.next_factory_space_surface = 1
+	end
+	local surface_name = surface_name .. global.next_factory_space_surface
 	local surface = game.surfaces[surface_name]
 	
 	if surface == nil then
-        surface = game.create_surface(surface_name, {width = 2, height = 2})
-        surface.daytime = 0.5
-        surface.freeze_daytime = true
-        if remote.interfaces["RSO"] then -- RSO compatibility
-            pcall(remote.call, "RSO", "ignoreSurface", surface_name)
-        end
+       		surface = game.create_surface(surface_name, {width = 2, height = 2})
+        	surface.daytime = 0.5
+        	surface.freeze_daytime = true
+        	if remote.interfaces["RSO"] then -- RSO compatibility
+            		pcall(remote.call, "RSO", "ignoreSurface", surface_name)
+        	end
 	end
+	local n = global.surface_factory_counters[surface_name] or 0
+	global.surface_factory_counters[surface_name] = n+1
 end
 
 --script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_entity, defines.events.script_raised_built, defines.events.script_raised_revive}
