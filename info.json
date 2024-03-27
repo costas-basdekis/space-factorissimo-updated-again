@@ -4,7 +4,7 @@
     "factorio_version": "1.1",
     "title": "Space Factorissimo Continued",
     "author": "Lazarus Octern",
-    "description": "Continuation of Space Factorissimo Fork by Yariazen for factorio 1.1.",
+    "description": "Continuation of Space Factorissimo Fork by Yariazen for factorio 1.1. Now Includes working T1/T2/T3 Space and Gravity Buildings",
     "dependencies": [
         "base >= 1.0.0",
         "space-exploration >= 0.6.0",
