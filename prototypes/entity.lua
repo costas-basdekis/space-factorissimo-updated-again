@@ -85,7 +85,7 @@ local function factory_prototype(name,tier, map_color, factory_default)
             map_color = map_color,
             is_military_target = true
         },
---[[        {
+        {
             type = "item-with-tags",
             name = name,
             --localised_name = { "entity-name." .. name },
@@ -95,10 +95,10 @@ local function factory_prototype(name,tier, map_color, factory_default)
             order = "a-c",
             place_result = name,
             stack_size = 1
-        }, ]]
+        },
         {
             type = "item",
-            name = name,
+            name = name .. "-raw",
             --localised_name = { "entity-name." .. name },
             icon = local_prefix .. "/graphics/icon/" .. name .. ".png",
             icon_size = 64,

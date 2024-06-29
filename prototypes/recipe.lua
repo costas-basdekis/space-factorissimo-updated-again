@@ -15,7 +15,7 @@ data:extend{
 		enabled = false,
 		energy_required = 30,
 		ingredients = {{ "se-space-platform-scaffold", 500 }, { "se-heat-shielding", 500 }, { "substation", 10 }},
-		result = sff_1
+		result = sff_1 .. "-raw",
 	},
 	{
 		type = "recipe",
@@ -23,7 +23,7 @@ data:extend{
 		enabled = false,
 		energy_required = 45,
 		ingredients = {{ "se-space-platform-scaffold", 1000 }, { "se-heat-shielding", 1000 }, { "substation", 50 }},
- 		result = sff_2
+		result = sff_2 .. "-raw",
 	},
 	{
 		type = "recipe",
@@ -31,7 +31,7 @@ data:extend{
 		enabled = false,
 		energy_required = 60,
 		ingredients = {{ "se-space-platform-plating", 5000 }, { "se-heat-shielding", 2000 }, { "substation", 100 }},
-		result = sff_3
+		result = sff_3 .. "-raw",
 	},
 
 	-- Grav Factories
@@ -41,7 +41,7 @@ data:extend{
 		enabled = false,
 		energy_required = 30,
 		ingredients = {{"se-space-platform-plating", 500}, { "se-heat-shielding", 500 }, { "substation", 10 }},
-		result = sgf_1
+		result = sgf_1 .. "-raw",
 	},
 	{
 		type = "recipe",
@@ -49,7 +49,7 @@ data:extend{
 		enabled = false,
 		energy_required = 45,
 		ingredients = {{"se-space-platform-plating", 1000}, { "se-heat-shielding", 1000 }, { "substation", 50 }},
- 		result = sgf_2
+		result = sgf_2 .. "-raw",
 	},
 	{
 		type = "recipe",
@@ -57,7 +57,7 @@ data:extend{
 		enabled = false,
 		energy_required = 60,
 		ingredients = {{"se-space-platform-plating", 5000}, { "se-heat-shielding", 2000 }, { "substation", 100 }},
-		result = sgf_3
+		result = sgf_3 .. "-raw",
 	},
 	-- Utilities
 	{
